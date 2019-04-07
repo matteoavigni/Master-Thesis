@@ -56,7 +56,8 @@ def my_returns(tickers, df):
 if __name__ == '__main__':
     #'^GSPC','^NDX','^STOXX50E','IBM'
     # criptovalute 'BTC-USD','ETH-USD','XRP-USD', ''
-    tickers = ['BTC-USD','ETH-USD','XRP-USD']
+    #tickers = ['BTC-USD','ETH-USD','XRP-USD']
+    tickers = [ 'AAPL']#, 'JNJ', 'GE', 'GOOG', 'CVX', 'PG', 'WFC']
     date1 = '2010-01-01'
     date2 = '2018-10-20'
     
@@ -78,7 +79,6 @@ if __name__ == '__main__':
             b[n,m] = permutation_test(df[n]['Close'],df[m]['Close'], method='approximate',num_rounds=10000, seed=0) 
     
     ## test rimozione duplicati
-
 
 
 
