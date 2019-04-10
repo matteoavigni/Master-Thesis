@@ -1,3 +1,16 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Apr 10 21:41:45 2019
+
+@author: matteo
+
+DESCRIPTION:
+    This script uses both mean-variance and Black-Litterman approach to compute the optimal portfolio given
+    a list of risky assets and the risk-free rate.
+"""
+
+
 from numpy import matrix, array, zeros, empty, sqrt, ones, dot, append, mean, cov, transpose, linspace
 from numpy.linalg import inv, pinv
 from pylab import *
@@ -10,33 +23,30 @@ import random
 ####################################
 
 def load_data_net():
+    """ 
+    DESCRIPTION:
+        This function loads historical stock prices of the assets given in "symbols" from Yahoo Finance 
+        database. Both symbols and caps must be manually updated
+    INPUT:
+        ------
+    OUTPUT:
+        symbols = list of tickers of the investable universe
+        prices_out = list of historical prices of the assets in "symbols"
+        caps_out = market caps of the assets in "symbols"
+    """
         symbols = [ 'XOM','AAPL', 'MSFT', 'JNJ', 'GE', 'GOOG', 'CVX', 'PG', 'WFC'] #,'BTC-USD'
         cap = {'BTC-USD':349.300E9,'^GSPC':23.77e12, 'XOM':349.329e9, 'AAPL':928.91e9, 'MSFT':919.821e9, 'JNJ':362.61e9, 'GE':87.183e9, 'GOOG':840.518e9, 'CVX':240.206e9, 'PG':256.289e9, 'WFC':221.556e9}
         n = len(symbols)
-        import scraping
-        prices_out, caps_out = [], []
-        prices = scraping.create_df(symbols,'2014-01-01','2019-04-06')
+        import scraping                                                         # module to download prices from Yahoo Finance database
+        prices_out, caps_out = [], []                                           
+        prices = scraping.create_df(symbols,'2014-01-01','2019-04-06')          # prices taken from Yahoo Finance
         for s in symbols:
-#                print("Reading symbol %s" % s)
-#                prices = scraping.create_df(s, '2014-01-01','2018-01-01')[s]['Close']
                 prices_out.append(prices[s]['Close'])
                 caps_out.append(cap[s])
+        
         return symbols, prices_out, caps_out
 
-# Function loads historical stock prices of nine major S&P companies and returns them together
-# with their market capitalizations, as of 2013-07-01
-# def load_data():
-#         symbols = ['XOM', 'AAPL', 'MSFT', 'JNJ', 'GE', 'GOOG', 'CVX', 'PG', 'WFC']
-#         cap = {'^GSPC':14.90e12, 'XOM':403.02e9, 'AAPL':392.90e9, 'MSFT':283.60e9, 'JNJ':243.17e9, 'GE':236.79e9, 'GOOG':292.72e9, 'CVX':231.03e9, 'PG':214.99e9, 'WFC':218.79e9}
-#         n = len(symbols)
-#         prices_out, caps_out = [], []
-#         for s in symbols:
-#                 print("Reading symbol %s" % s)
-#                 q = QuoteSeries.loadfromfile(s, 'data/black_litterman/%s.csv' % s)
-#                 prices = q.getprices()[-500:]
-#                 prices_out.append(prices)
-#                 caps_out.append(cap[s])
-#         return symbols, prices_out, caps_out
+#==========================================================================================================================================================#
 
 # Function takes historical stock prices together with market capitalizations and calculates
 # names       - array of assets' names
@@ -108,8 +118,8 @@ def solve_frontier(R, C, rf):
         n = len(R)      # Number of assets in the portfolio
         for r in linspace(min(R), max(R), num=20): # Iterate through the range of returns on Y axis
                 W = ones([n])/n         # start optimization with equal weights
-                b_ = [(0,1) for i in range(n)]
-                c_ = ({'type':'eq', 'fun': lambda W: sum(W)-1. })
+                b_ = [(0,1) for i in range(n)]                           # pesi compresi tra 0 e 1
+                c_ = ({'type':'eq', 'fun': lambda W: sum(W)-1. })        # full invested
                 optimized = scipy.optimize.minimize(fitness, W, (R, C, r), method='SLSQP', constraints=c_, bounds=b_)
                 if not optimized.success:
                         raise BaseException(optimized.message)
@@ -118,23 +128,34 @@ def solve_frontier(R, C, rf):
                 frontier_var.append(port_var(optimized.x, C))   # min-variance based on optimized weights
                 frontier_weights.append(optimized.x)
         return array(frontier_mean), array(frontier_var), frontier_weights
+#==========================================================================================================================================================#
 
-# Given risk-free rate, assets returns and covariances, this
-# function calculates weights of tangency portfolio with respect to
-# sharpe ratio maximization
+
 def solve_weights(R, C, rf):
-        def fitness(W, R, C, rf):
-                mean, var = port_mean_var(W, R, C)      # calculate mean/variance of the portfolio
-                util = (mean - rf) / sqrt(var)          # utility = Sharpe ratio
-                return 1/util                                           # maximize the utility, minimize its inverse value
+    """ 
+    DESCRIPTION:
+        solve_weights finds the optimal weights in the sense of mean-variance minimization (sharpe ratio maximization)
+    INPUT:
+        R = expected returns of the available risky assets
+        C = variance-covariance matrix for the available risky assets
+        rf = risk free return
+    OUTPUT:
+        optimized.x = optimal weights
+    """
+        def fitness(W, R, C, rf):                               # function to be minimized
+                mean, var = port_mean_var(W, R, C)              # calculate mean/ of the portfolio
+                util = (mean - rf) / sqrt(var)                  # utility = Sharpe ratio
+                return 1/util                                   # maximize the utility, minimize its inverse value
         n = len(R)
         W = ones([n])/n                                         # start optimization with equal weights
-        b_ = [(0.,1.) for i in range(n)]        # weights for boundaries between 0%..100%. No leverage, no shorting
+        b_ = [(0.,1.) for i in range(n)]                        # weights for boundaries between 0%..100%. No leverage, no shorting
         c_ = ({'type':'eq', 'fun': lambda W: sum(W)-1. })       # Sum of weights must be 100%
-        optimized = scipy.optimize.minimize(fitness, W, (R, C, rf), method='SLSQP', constraints=c_, bounds=b_)
+        optimized = scipy.optimize.minimize(fitness, W, (R, C, rf), method='SLSQP', constraints=c_, bounds=b_) #Sequential Least Square Programming method
         if not optimized.success:
                 raise BaseException(optimized.message)
         return optimized.x
+
+#==========================================================================================================================================================#
 
 def print_assets(names, W, R, C):
         print("%-10s %6s %6s %6s %s" % ("Name", "Weight", "Return", "Dev", "   Correlations"))
@@ -185,7 +206,7 @@ def prepare_views_and_link_matrix(names, views):
                 P[i, nameToIndex[name1]] = +1 if views[i][1]=='>' else -1
                 P[i, nameToIndex[name2]] = -1 if views[i][1]=='>' else +1
         return array(Q), P
-
+#%%  MAIN
 ####################################
 # Main
 ####################################

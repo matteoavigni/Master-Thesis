@@ -7,12 +7,10 @@ Created on Sun Mar 24 11:02:10 2019
 """
 
 
-import numpy as np
 import fix_yahoo_finance as fy
 import pandas as pd
 import matplotlib.pyplot as plt
 import scipy.stats  as stats
-from mlxtend.evaluate import permutation_test
 
 #%matplotlib inline
 
@@ -57,8 +55,8 @@ if __name__ == '__main__':
     #'^GSPC','^NDX','^STOXX50E','IBM'
     # criptovalute 'BTC-USD','ETH-USD','XRP-USD', ''
     #tickers = ['BTC-USD','ETH-USD','XRP-USD']
-    tickers = [ 'AAPL']#, 'JNJ', 'GE', 'GOOG', 'CVX', 'PG', 'WFC']
-    date1 = '2010-01-01'
+    tickers = [ 'AAPL','goog']#, 'JNJ', 'GE', 'GOOG', 'CVX', 'PG', 'WFC']
+    date1 = '2014-01-01'
     date2 = '2018-10-20'
     
 
@@ -73,10 +71,10 @@ if __name__ == '__main__':
             a[n,m] = stats.pearsonr(df[n]['Close'],df[m]['Close'])[1]
 
 ## PERMUTATION PVALUES
-    b= {}
-    for n in tickers: # rows are the number of rows in the matrix.
-        for m in tickers:
-            b[n,m] = permutation_test(df[n]['Close'],df[m]['Close'], method='approximate',num_rounds=10000, seed=0) 
+#    b= {}
+#    for n in tickers: # rows are the number of rows in the matrix.
+#        for m in tickers:
+#            b[n,m] = permutation_test(df[n]['Close'],df[m]['Close'], method='approximate',num_rounds=10000, seed=0) 
     
     ## test rimozione duplicati
 
