@@ -34,13 +34,14 @@ def load_data_net():
                 prices_out = list of historical prices of the assets in "symbols"
                 caps_out = market caps of the assets in "symbols"
         """
+#        symbols = ['BTC-USD', '^SPX', '^STOXX', 'JPMB', 'CORP', 'IXN', 'DBC'] 
         symbols = [ 'XOM','AAPL', 'MSFT', 'JNJ', 'GE', 'GOOG', 'CVX', 'PG', 'WFC','BTC-USD']
-        cap = {'BTC-USD':349.300E9,'^GSPC':23.77e12, 'XOM':349.329e9, 'AAPL':928.91e9, 'MSFT':919.821e9, 'JNJ':362.61e9, 'GE':87.183e9, 'GOOG':840.518e9,
-               'CVX':240.206e9, 'PG':256.289e9, 'WFC':221.556e9, 'BTC-USD':93.795e9} #
-        n = len(symbols)
+        cap = {'BTC-USD':334.300E9,'^GSPC':23.77e12, 'XOM':349.329e9, 'AAPL':928.91e9, 'MSFT':919.821e9, 'JNJ':362.61e9, 'GE':87.183e9, 'GOOG':840.518e9, 'CVX':240.206e9, 'PG':256.289e9, 'WFC':221.556e9} #
+#        cap = {'BTC-USD':334.07e9, '^SPX':23.77e12, '^STOXX':11.5063e9, 'JPMB':62.33e6, 'CORP':620.55e6, 'IXN':2.82e9, 'DBC':1.77e9}
+#        n = len(symbols)
         import scraping                                                         # module to download prices from Yahoo Finance database
         prices_out, caps_out = [], []                                           
-        prices = scraping.create_df(symbols,'2015-01-01','2019-04-06')          # prices taken from Yahoo Finance
+        prices = scraping.create_df(symbols,'2016-01-01','2019-04-06')          # prices taken from Yahoo Finance
         for s in symbols:
                 prices_out.append(prices[s]['Close'])
                 caps_out.append(cap[s])
