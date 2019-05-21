@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.20)  21 MAY 2019 00:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.5.20)  22 MAY 2019 00:46
 entering extended mode
 **./mavigni_call_22052019.tex
 (mavigni_call_22052019.tex
@@ -935,117 +935,128 @@ Dictionary: translator-theorem-dictionary, Language: English
 {C:/Users/matte/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2
 
 ]
+Package epstopdf Info: Source file: <BTCreturns.eps>
+(epstopdf)                    date: 2019-05-21 22:53:51
+(epstopdf)                    size: 52593 bytes
+(epstopdf)             Output file: <BTCreturns-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-05-21 22:53:56
+(epstopdf)                    size: 25533 bytes
+(epstopdf)             Command: <epstopdf --outfile=BTCreturns-eps-converted-to
+.pdf BTCreturns.eps>
+(epstopdf)             \includegraphics on input line 23.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex.exe (file ./BTCreturns-eps-converted-to.pdf): PDF incl
+usion: found PDF version <1.7>, but at most version <1.5> allowed
+<BTCreturns-eps-converted-to.pdf, id=72, 513.92pt x 274.02374pt>
+File: BTCreturns-eps-converted-to.pdf Graphic file (type pdf)
+<use BTCreturns-eps-converted-to.pdf>
+Package pdftex.def Info: BTCreturns-eps-converted-to.pdf  used on input line 23
+.
+(pdftex.def)             Requested size: 341.43306pt x 182.05624pt.
+[3
+
+ <./BTCreturns-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <BTCqqplot.eps>
-(epstopdf)                    date: 2019-05-20 23:32:36
+(epstopdf)                    date: 2019-05-21 00:53:16
 (epstopdf)                    size: 87149 bytes
 (epstopdf)             Output file: <BTCqqplot-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-05-20 23:32:41
+(epstopdf)                    date: 2019-05-21 00:53:16
 (epstopdf)                    size: 189247 bytes
 (epstopdf)             Command: <epstopdf --outfile=BTCqqplot-eps-converted-to.
 pdf BTCqqplot.eps>
-(epstopdf)             \includegraphics on input line 22.
+(epstopdf)             \includegraphics on input line 28.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex.exe (file ./BTCqqplot-eps-converted-to.pdf): PDF inclu
 sion: found PDF version <1.7>, but at most version <1.5> allowed
-<BTCqqplot-eps-converted-to.pdf, id=72, 282.05376pt x 217.81375pt>
+<BTCqqplot-eps-converted-to.pdf, id=107, 282.05376pt x 217.81375pt>
 File: BTCqqplot-eps-converted-to.pdf Graphic file (type pdf)
 <use BTCqqplot-eps-converted-to.pdf>
-Package pdftex.def Info: BTCqqplot-eps-converted-to.pdf  used on input line 22.
+Package pdftex.def Info: BTCqqplot-eps-converted-to.pdf  used on input line 28.
 
-(pdftex.def)             Requested size: 282.05305pt x 217.8132pt.
-[3
+(pdftex.def)             Requested size: 312.9803pt x 241.71295pt.
+
+Overfull \vbox (13.10646pt too high) detected at line 28
+ []
+
+[4
 
  <./BTCqqplot-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <SPXqqplot.eps>
-(epstopdf)                    date: 2019-05-20 23:32:19
-(epstopdf)                    size: 63482 bytes
-(epstopdf)             Output file: <SPXqqplot-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-05-20 23:32:41
-(epstopdf)                    size: 138944 bytes
-(epstopdf)             Command: <epstopdf --outfile=SPXqqplot-eps-converted-to.
-pdf SPXqqplot.eps>
-(epstopdf)             \includegraphics on input line 27.
+Package epstopdf Info: Source file: <lagplot.eps>
+(epstopdf)                    date: 2019-05-21 23:27:08
+(epstopdf)                    size: 19184 bytes
+(epstopdf)             Output file: <lagplot-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-05-21 23:28:10
+(epstopdf)                    size: 10069 bytes
+(epstopdf)             Command: <epstopdf --outfile=lagplot-eps-converted-to.pd
+f lagplot.eps>
+(epstopdf)             \includegraphics on input line 39.
 Package epstopdf Info: Output file is already uptodate.
 
 
-pdfTeX warning: pdflatex.exe (file ./SPXqqplot-eps-converted-to.pdf): PDF inclu
-sion: found PDF version <1.7>, but at most version <1.5> allowed
-<SPXqqplot-eps-converted-to.pdf, id=111, 282.05376pt x 217.81375pt>
-File: SPXqqplot-eps-converted-to.pdf Graphic file (type pdf)
-<use SPXqqplot-eps-converted-to.pdf>
-Package pdftex.def Info: SPXqqplot-eps-converted-to.pdf  used on input line 27.
+pdfTeX warning: pdflatex.exe (file ./lagplot-eps-converted-to.pdf): PDF inclusi
+on: found PDF version <1.7>, but at most version <1.5> allowed
+<lagplot-eps-converted-to.pdf, id=146, 513.92pt x 274.02374pt>
+File: lagplot-eps-converted-to.pdf Graphic file (type pdf)
+<use lagplot-eps-converted-to.pdf>
+Package pdftex.def Info: lagplot-eps-converted-to.pdf  used on input line 39.
+(pdftex.def)             Requested size: 312.9803pt x 166.88245pt.
+[5
 
-(pdftex.def)             Requested size: 282.05305pt x 217.8132pt.
-[4
-
- <./SPXqqplot-eps-converted-to.pdf>]
+ <./lagplot-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <BTCautocor.eps>
-(epstopdf)                    date: 2019-05-20 23:39:02
+(epstopdf)                    date: 2019-05-21 00:53:16
 (epstopdf)                    size: 8315 bytes
 (epstopdf)             Output file: <BTCautocor-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-05-20 23:40:10
+(epstopdf)                    date: 2019-05-21 00:53:16
 (epstopdf)                    size: 11264 bytes
 (epstopdf)             Command: <epstopdf --outfile=BTCautocor-eps-converted-to
 .pdf BTCautocor.eps>
-(epstopdf)             \includegraphics on input line 34.
+(epstopdf)             \includegraphics on input line 46.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex.exe (file ./BTCautocor-eps-converted-to.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<BTCautocor-eps-converted-to.pdf, id=150, 282.05376pt x 217.81375pt>
+<BTCautocor-eps-converted-to.pdf, id=182, 282.05376pt x 217.81375pt>
 File: BTCautocor-eps-converted-to.pdf Graphic file (type pdf)
 <use BTCautocor-eps-converted-to.pdf>
-Package pdftex.def Info: BTCautocor-eps-converted-to.pdf  used on input line 34
+Package pdftex.def Info: BTCautocor-eps-converted-to.pdf  used on input line 46
 .
-(pdftex.def)             Requested size: 282.05305pt x 217.8132pt.
-[5
+(pdftex.def)             Requested size: 312.9803pt x 241.71295pt.
+
+Overfull \vbox (13.10646pt too high) detected at line 46
+ []
+
+[6
 
  <./BTCautocor-eps-converted-to.pdf>]
-Package epstopdf Info: Source file: <SPXautocor.eps>
-(epstopdf)                    date: 2019-05-20 23:38:45
-(epstopdf)                    size: 8161 bytes
-(epstopdf)             Output file: <SPXautocor-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-05-20 23:40:11
-(epstopdf)                    size: 11076 bytes
-(epstopdf)             Command: <epstopdf --outfile=SPXautocor-eps-converted-to
-.pdf SPXautocor.eps>
-(epstopdf)             \includegraphics on input line 39.
+Package epstopdf Info: Source file: <BTCabsret.eps>
+(epstopdf)                    date: 2019-05-22 00:02:56
+(epstopdf)                    size: 8310 bytes
+(epstopdf)             Output file: <BTCabsret-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-05-22 00:03:01
+(epstopdf)                    size: 11439 bytes
+(epstopdf)             Command: <epstopdf --outfile=BTCabsret-eps-converted-to.
+pdf BTCabsret.eps>
+(epstopdf)             \includegraphics on input line 53.
 Package epstopdf Info: Output file is already uptodate.
 
 
-pdfTeX warning: pdflatex.exe (file ./SPXautocor-eps-converted-to.pdf): PDF incl
-usion: found PDF version <1.7>, but at most version <1.5> allowed
-<SPXautocor-eps-converted-to.pdf, id=188, 282.05376pt x 217.81375pt>
-File: SPXautocor-eps-converted-to.pdf Graphic file (type pdf)
-<use SPXautocor-eps-converted-to.pdf>
-Package pdftex.def Info: SPXautocor-eps-converted-to.pdf  used on input line 39
-.
-(pdftex.def)             Requested size: 282.05305pt x 217.8132pt.
-[6
+pdfTeX warning: pdflatex.exe (file ./BTCabsret-eps-converted-to.pdf): PDF inclu
+sion: found PDF version <1.7>, but at most version <1.5> allowed
+<BTCabsret-eps-converted-to.pdf, id=220, 434.62375pt x 274.02374pt>
+File: BTCabsret-eps-converted-to.pdf Graphic file (type pdf)
+<use BTCabsret-eps-converted-to.pdf>
+Package pdftex.def Info: BTCabsret-eps-converted-to.pdf  used on input line 53.
 
- <./SPXautocor-eps-converted-to.pdf>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 61.
+(pdftex.def)             Requested size: 295.90866pt x 186.57619pt.
+[7
 
-("C:\Users\matte\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 61.
-("C:\Users\matte\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 61.
-
-("C:\Users\matte\AppData\Local\Programs\MiKTeX 2.9\tex/latex/sansmathaccent\ot1
-mathkerncmss.fd"
-File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
-thkerncmss.
-) [7
-
-] [8
+ <./BTCabsret-eps-converted-to.pdf>] [8
 
 ]
 \tf@nav=\write6
@@ -1057,29 +1068,29 @@ thkerncmss.
 \tf@snm=\write8
 \openout8 = `mavigni_call_22052019.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 73.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 73.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 89.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 89.
  (mavigni_call_22052019.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 73.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 73.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 89.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 89.
 Package rerunfilecheck Info: File `mavigni_call_22052019.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 17289 strings out of 492945
- 337274 string characters out of 3126252
- 407976 words of memory out of 3000000
- 20771 multiletter control sequences out of 15000+200000
- 10390 words of font info for 38 fonts, out of 3000000 for 9000
+ 17233 strings out of 492945
+ 335978 string characters out of 3126252
+ 406976 words of memory out of 3000000
+ 20735 multiletter control sequences out of 15000+200000
+ 5452 words of font info for 20 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,15n,59p,809b,564s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/matte/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmss10.pfb><C:/Users/matte/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmss12.pfb><C:/Users/matte/AppData/Local/Programs/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmss8.pfb>
-Output written on mavigni_call_22052019.pdf (8 pages, 425273 bytes).
+Output written on mavigni_call_22052019.pdf (8 pages, 319681 bytes).
 PDF statistics:
- 292 PDF objects out of 1000 (max. 8388607)
+ 298 PDF objects out of 1000 (max. 8388607)
  17 named destinations out of 1000 (max. 500000)
- 69 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 74 words of extra memory for PDF output out of 10000 (max. 10000000)
 
