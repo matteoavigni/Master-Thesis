@@ -12,7 +12,7 @@ library("ggpubr")
 btc <- na.omit(read.csv("C:/Users/matte/Desktop/Master-Thesis/Master-Thesis/R_code/BTC-USD.csv"))
 spx  <- na.omit(read.csv("C:/Users/matte/Desktop/Master-Thesis/Master-Thesis/R_code/spx.csv"))
 
-btc$returns = c(0,diff(as.matrix(log(btc['Close'])), lag =1)*100)
+btc$returns = c(0,diff(as.matrix(log(btc['Close'])), lag =1))
 btc$square_res = c(btc$returns**2)
 btc$Date = as.Date(btc$Date)
 spx$returns = c(0,diff(as.matrix(log(spx['Close'])), lag =1)*100)
@@ -35,8 +35,8 @@ qqline(btc$square_res, col='red')
 
 
 # qqplot spx
-# qqnorm(spx$returns)
-# qqline(spx$returns, col='red')
+qqnorm(spx$returns)
+qqline(spx$returns, col='red')
 
 
 #### AUTOCORRELATION ####
