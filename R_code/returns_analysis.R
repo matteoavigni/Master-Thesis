@@ -8,14 +8,24 @@ require(graphics)
 library("dplyr")
 library("ggpubr")
 
+df = read_excel('C:/Users/matte/Desktop/Master-Thesis/Master-Thesis/R_code/DATI Certi.xlsx', sheet = 'Foglio3')
+new_returns = data.frame(matrix(ncol = 2 , nrow = length(df$`Final Price`)))
+colnames(new_returns) <- c('date','returns')
+new_returns$date <- df$DATA
+new_returns$returns = c(0,diff(as.matrix(log(df$`Final Price`)), lag =1))
+qqnorm(as.numeric(unlist(new_returns$returns)), main = NA, xlab = NA, ylab = NA)
+qqline(as.numeric(unlist(new_returns$returns)), col='red', xlab = NA, ylab = NA)
+
 
 prices = read_excel('C:/Users/matte/Desktop/Master-Thesis/Master-Thesis/Excelsheets/prices.xlsx')
+
 # bitcoin prices
-postscript(paste("C:/Users/matte/Desktop/Master-Thesis/Master-Thesis/20190529/BTCprices.eps", sep =""), horizontal = FALSE, onefile = FALSE, width = 4.0, height = 3.0)
+#postscript(paste("C:/Users/matte/Desktop/Master-Thesis/Master-Thesis/20190529/BTCprices.eps", sep =""), horizontal = FALSE, onefile = FALSE, width = 4.0, height = 3.0)
 ggplot(data = prices, mapping = aes(x = date, y = BITCOIN, group=1)) +
   geom_line(color = "#00AFBB", size = 1) +
   ggtitle('BTC returns')
-dev.off()
+
+#dev.off()
 
 # reutrns
 returns = data.frame(matrix(ncol = length(c(names(prices))) , nrow = 2165))
@@ -26,11 +36,16 @@ for(n in x[2:18]){
   returns[n] =  c(0,diff(as.matrix(log(prices[n])), lag =1))
 }
 returns['date'] <- prices['date']
-postscript(paste("C:/Users/matte/Desktop/Master-Thesis/Master-Thesis/20190529/BTCreturns.eps", sep =""), horizontal = FALSE, onefile = FALSE, width = 4.0, height = 3.0)
-ggplot(data = prices, mapping = aes(x = date, y = BITCOIN, group=1)) +
+#postscript(paste("C:/Users/matte/Desktop/Master-Thesis/Master-Thesis/20190529/BTCreturns.eps", sep =""), horizontal = FALSE, onefile = FALSE, width = 4.0, height = 3.0)
+ggplot(data = returns, mapping = aes(x = date, y = BITCOIN, group=1)) +
   geom_line(color = "#00AFBB", size = 1) +
   ggtitle('BTC returns')
-dev.off()
+
+ggplot(data = my_returns, mapping = aes(x = btc_date, y = btc, group=1)) +
+  geom_line(color = "#00AFBB", size = 1) +
+  ggtitle('BTC returns')
+
+#dev.off()
 
 ggplot(data = returns, mapping = aes(x = date, y = BITCOIN, group=1)) +
   geom_line(color = "#00AFBB", size = 1) +
@@ -38,6 +53,13 @@ ggplot(data = returns, mapping = aes(x = date, y = BITCOIN, group=1)) +
 
 
 # qqplot
+qqnorm(as.numeric(unlist(returns$BITCOIN)), main = NA, xlab = NA, ylab = NA)
+qqline(as.numeric(unlist(returns$BITCOIN)), col='red', xlab = NA, ylab = NA)
+
+qqnorm(as.numeric(unlist(my_returns$btc)), main = NA, xlab = NA, ylab = NA)
+qqline(as.numeric(unlist(my_returns$btc)), col='red', xlab = NA, ylab = NA)
+
+
 for(n in x[2:18]){  
   postscript(paste("C:/Users/matte/Desktop/Master-Thesis/Master-Thesis/20190529/",n,"qqplot.eps", sep =""), horizontal = FALSE, onefile = FALSE, width = 4.0, height = 3.0)
   qqnorm(as.numeric(unlist(returns[n])), main = NA, xlab = NA, ylab = NA)
