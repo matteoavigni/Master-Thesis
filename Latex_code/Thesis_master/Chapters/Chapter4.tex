@@ -1,0 +1,201 @@
+\chapter{Returns Analysis}
+\label{chpr:ch4}
+\bigskip
+
+when considering cryptoassets in asset allocation, one of the most critic factor is the high volatility that in much cases keep investors away from this asset class. With this in mind it's interesting to analyse cryptoassets returns and compare them to the returns of all the other asset classes.
+
+\bigskip
+In this chapter is exploited the role of returns in asset allocation and then a look at the stylized facts that characterize returns of financial instruments such as \textit{fat tails} and \textit{volatility clustering} is given.
+
+\section{Fundamentals}
+Starting from the 70's, thanks to the development of mathematical finance as a study subject, lots of mathematicians have tried to model financial markets in a stochastic framework with the objective to make the best possible asset allocation decision.
+
+More clearly, the goal is to estimate the distribution of the price of financial instruments at a future time horizon $t+\tau$ (the investment horizon).  A rational approach should link the market model, i.e.the distribution of the price at the investment horizon, with the observations, i.e. the past realizations of some market observables.
+The way to go from historical data to future prices consists of four building blocks:
+\begin{enumerate}
+    \item Detecting the invariants
+    \item Determining the distribution of the invariants
+    \item Projecting the invariants into the future
+    \item Mapping the invariants into the market prices
+\end{enumerate}
+
+\noindent
+The first step consists of finding an element which characterizes the market and that repeats itself identically throughout history in the market. These elements are the invariants.
+
+In \citep{Meucci} a definition of invariants is provided:
+\newtheorem{definition}{Definition}[section]
+\begin{definition}
+    Consider a starting point $\Tilde{t}$ and a time interval $\Tilde{\tau}$, which we call estimation interval. Consider the set of equally-spaced dates:
+    \begin{equation}
+        \mathcal{D}_{\Tilde{t},\Tilde{\tau}} \equiv \left\{\Tilde{t},\Tilde{t}+\Tilde{\tau},\Tilde{t}+2\Tilde{\tau},...\right\}
+    \end{equation}
+    consider a set of random varibales:
+    \begin{equation}
+        X_t, \: \: \: \: \: t \in \mathcal{D}_{\Tilde{t},\Tilde{\tau}}
+    \end{equation}
+    the random variables $X_t$ are market invariants for the starting point $\Tilde{t}$ and the estimation interval $\Tilde{\tau}$ if they are independent and identically distributed and if the realization $x_t$ of $X_t$ becomes available at time t.
+\end{definition}
+\bigskip
+This is still not enough since we would like to find a model that describe these invariants independently by the starting point $\Tilde{t}$.
+Therefor, we give the following definition:
+\begin{definition}
+    A time homogeneus invariant is an invariant whose distributione does not depend on the reference time $\Tilde{t}$
+\end{definition}
+\bigskip
+
+The second step of the process is to infer a distribution of the invariants thanks to their repetitive behaviour, the third step consists of projecting this estimated distribution to the generic time horizon $\tau$ that is relevant for the investment decision while the last step is to map the forecasted invariant in the future price of the instrument under analysis.
+\bigskip
+
+In an investment portfolio composed by different asset classes it is crucial to find for every instrument its own invariant.
+
+
+In the case of equity market the returns are considered invariants. This can be simply verified by looking for uncorrelation between returns in different days. In the scatter plots in figure \ref{fig:scattplot} there are on the x-axis the returns at time $t$ while on the y-axis the ones at time $t+1$. 
+
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{\begin{tabular}{c c}
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=60mm]{Images/chap4/"btc _lag1d".png}
+    \end{minipage}
+    &  
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=60mm]{Images/chap4/"eth _lag1d".png}
+    \end{minipage}\\
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=60mm]{Images/chap4/"ltc _lag1d".png}
+    \end{minipage}
+    &  
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=60mm]{Images/chap4/"xrp _lag1d".png}
+    \end{minipage}\\
+    \end{tabular}}
+    \captionof{figure}{Lagged returns scatter plot}
+    \label{fig:scattplot}
+\end{table}
+\bigskip
+
+The absence of trends means that returns satisfies the independence requirement. To check the identically distributed requirement we look through the empirical distribution of returns, in particular we draw the rolling 2-years mean, standard deviation, kurtosis and skewness of daily returns. We expect to see almost flat lines for every of these parameters if we assume that returns are the invariants we are looking for.
+
+
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{\begin{tabular}{c c}
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=75mm]{Images/chap4/"BTC _lag1d_200".png}
+    \end{minipage}
+    &  
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=75mm]{Images/chap4/"ETH _lag1d_200".png}
+    \end{minipage}\\
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=75mm]{Images/chap4/"LTC _lag1d_200".png}
+    \end{minipage}
+    &  
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=75mm]{Images/chap4/"XRP _lag1d_200".png}
+    \end{minipage}\\
+    \end{tabular}}
+    \captionof{figure}{Rolling 2-years values of parameters for empirical distribution of cryptoassets}
+    \label{tab:distrib_params}
+\end{table}
+\bigskip
+
+All the parameters seems to remain almost flat during time except for the kurtosis of Ripple. It's due to the sudden growth of its value at the end of 2017 which goes out of sample where we see the jump from about 32 to about 14.
+This flatness allow us to assume that retuns act as invariants for cryptoassets. Even for equity, indexes, currencies and commodities the returns are considered invariants for asset allocation purposes. Below the lagged returns and parameters of empirical distribution of daily returns for the S\&p500 are reported. The differences with respect to the cryptoassets are the magnitudes of all these values but the absence of trend for lagged returns and the flatness of the parameters are still valid.
+
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{\begin{tabular}{c c}
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=60mm]{Images/chap4/"sp500 _lag1d".png}
+    \end{minipage}
+    &  
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=75mm]{Images/chap4/"sp500 _lag1d_200".png}
+    \end{minipage}
+    \end{tabular}}
+    \captionof{figure}{Lagged returns and rolling 2-years values of parameters for empirical distribution of S\&P500}
+    \label{tab:my_label}
+\end{table}
+\bigskip
+
+
+
+From this section's analysis we can conclude that the properties needed for invariants are satisfied by returns also for cryptoassets. This suggests that one can insert cryptoassets in the usual models for asset allocation such as the Markowitz approach.
+
+\section{Stylized Facts}
+At this point we go deeper in the analysis of returns. We want to assess their empirical characteristics, in particular we check if also for this asset class there are the $"problems"$ of $fat tails$ and $volatility clustering$.
+
+\subsection{Fat Tails}
+https://www.nasdaq.com/articles/fat-tail-risk-what-it-means-and-why-you-should-be-aware-it-2015-11-02
+
+Following the 2008 Financial Crisis, more and more doubts about usual risk managements metrics have risen. Usual asset pricing models assume Gaussian distribution for market invariants but what happens is that extremal events are more likely than estimated. Mathematically speaking this means that in reality the tails of model parameters distributions are fatter than the Gaussian ones. For a normal distribution, a majority of asset variation fall within 3 standard deviations of its mean which subsequently understates risk and volatility.
+
+To verify this financial markets property for cryptoassets we look at the empirical distribution of them versus the Gaussian one with same mean and variance.
+
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{\begin{tabular}{c c}
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=70mm]{Images/chap4/"btcdist".png}
+    \end{minipage}
+    &  
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=70mm]{Images/chap4/"ethdist".png}
+    \end{minipage}\\
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=70mm]{Images/chap4/"ltcdist".png}
+    \end{minipage}
+    &  
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=70mm]{Images/chap4/"xrpdist".png}
+    \end{minipage}\\
+    \end{tabular}}
+    \captionof{figure}{Empirical versus Gaussian distribution for cryptoassets}
+    \label{fig:figdistr}
+\end{table}
+\bigskip
+
+Figure \ref{fig:figdistr} shows that also in this case the Gaussian distribution has some drawback fitting the real distribution of returns. Indeed, as we saw also in figure \ref{tab:distrib_params}, all of these distributions have a leptokurtic shape. If we look at the tails of the distributions we see that the red ones goes to zero slightly faster than the blue ones.
+
+
+
+\subsection{Volatility Clustering}
+Observing empirical returns, we encounter another drawback: in financial markets \textit{"large changes tend to be followed by large changes, of either sign, and small changes tend to be followed by small changes"} (Mandelbrot, 1963). This means that the volatility tends to have periods of high magnitudes followed by periods of low magnitude. The consequence of this clustering is that the hypothesis of $iid$ returns is no longer acceptable since they are no more completely independent.
+
+To check this property for cryptoassets, we look at the autocorrelation function of the absolute values of returns.
+
+
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{\begin{tabular}{c c}
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=75mm]{Images/chap4/"btc _abs_autocor".png}
+    \end{minipage}
+    &  
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=75mm]{Images/chap4/"eth _abs_autocor".png}
+    \end{minipage}\\
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=75mm]{Images/chap4/"ltc _abs_autocor".png}
+    \end{minipage}
+    &  
+    \begin{minipage}{.5\textwidth}
+      \includegraphics[height=60mm, width=75mm]{Images/chap4/"xrp _abs_autocor".png}
+    \end{minipage}\\
+    \end{tabular}}
+    \captionof{figure}{Autocorrelation function of absolute values of cryptoassets returns}
+    \label{tab:my_label}
+\end{table}
+\bigskip
+
+
+The autocorrelation function is the correlation of a signal with a delayed copy of itself as a function of delay. Thanks to this function what we can say is that the magnitude of returns at the generic time $t$ has a positive and significantly different from zero correlation with the magnitude of the returns in the previous periods ($t-1$, $t-2$,...) and volatility clustering property still holds.
+
+
+From this chapter we understood that even with high volatility and returns, the cryptoassets can be modelled like all the other financial instruments. The main properties and drawbacks hold also in this case and so the literature about financial returns is still true for cryptoassets. The next step is to insert them in an investment portfolio and to see if one can take some profit from their returns even with such high volatilities.
+
+
+\bigskip
+
+

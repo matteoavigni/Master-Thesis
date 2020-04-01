@@ -1,0 +1,23 @@
+\chapter{Conclusions}
+\label{chpr:ch6}
+\bigskip
+
+Let's sum up what we've done in this work:
+\bigskip    
+
+in chapter \ref{chpr:ch2} we've gone through present literature about the inclusion of cryptoassets in an Optimal Portfolio Allocation strategy. Some works studied correlations between cryptoassets with different results due to different time window for the data sample. An introduction of different cryptoassets in a portfolio allocation framework is rarely founded in literature. Just Bitcoin has been analysed in these terms. The presented literature states that having a small percentage of wealth invested in Bitcoin can yield much better returns with respect to not having it at all.
+
+\bigskip
+In chapter \ref{chpr:ch3} we performed a correlation analysis to check whether it is reasonable to consider the cryptoassets as a new asset class: first we've studied the correlation matrix over the whole dataset, after that we analysed rolling correlations. Results show that btc, ltc, eth and xrp are uncorrelated with the other asset classes but they have high correlations between each other (in particular they're increasing over time, since these market is going to be more efficient). 
+
+\bigskip
+To consider this new asset class in the Markowitz's Portfolio Theory it was necessary to wonder if it can be modelled as all other asset classes. In chapter \ref{chpr:ch4} we studied returns distributions and stylized facts of btc, ltc, eth and xrp by comparing them with the other standard instruments. We found that all the usual characteristics (fat tails, volatility clustering, ...) hold also in the case of cryptoassets even if they are very volatile.
+
+\bigskip
+In chapter \ref{chpr:ch5} we finally moved to asset allocation. We've considered three cases: the \textit{Standard}, where we considered an investable universe without cryptoassets, the \textit{\textcolor{blue}{Standard + btc}}, where we included also Bitcoin in the set of assets one may invest in and the \textit{\textcolor{red}{Standard + cryptoassets}}, where we included also ltc, eth and xrp. A first result shows that the more instruments one considers the better return he gets, but this results does not hold when the dataset considered has a shorter time window: the difference between the \textit{\textcolor{blue}{Standard + btc}} case and the \textit{\textcolor{red}{Standard + cryptoassets}} becomes very small. By going into the allocation over rolling time windows we saw that the total allocation in cryptoassets remain unchanged in the these two cases. Then we've seen that by including cryptoassets in the portfolio the relative weights of other instruments also remain unchanged. Thanks to these observations, we can refer to cryptoassets as a new asset class.\\
+Moreover, as one can see from the figure \ref{introfigure} in the introduction, Bitcoin rapresent more than 5o\% of cryptoassets in terms of exchanged volume.\\
+
+
+Since cryptoassets have a very short history with respect to other financial instruments, a possible further development of this work could be to update the dataset and to analyze consistency of high correlations between them and low correlation with other instruments. An other interesting development could be to include cryptoassets in portfolio theory by using other frameworks, such as the Black-Littermann one, which shows more stability in allocation results with respect to the classical Mean-Variance portfolio theory and allow to take into account investors views on market returns.\\
+
+Thanks to the numerical results obtained in this work we can say that it makes no big differences to include just Bitcoin or Bitcoin plus other cryptoassets in an investment portfolio. Moreover we believe that the infrastructure and the community of Bitcoin make it much more durable and resilient with respect to all the other cyrptoassets.
