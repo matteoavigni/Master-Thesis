@@ -1,4 +1,4 @@
-\documentclass[c, 10pt]{beamer}
+\documentclass[aspectratio=169]{beamer}
 
 %\usepackage{tikz}
 %\usetikzlibrary{backgrounds,fit, positioning,shapes}
@@ -7,11 +7,32 @@
 \usepackage{booktabs}
 \usepackage{mathtools}
 \usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{float}
+\restylefloat{table}
+\usepackage{textgreek}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{natbib}
+\usepackage{filecontents}
+\usepackage{url}
+\usepackage{breakurl}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{tabulary}
+\usepackage{xcolor}
 \definecolor{mygreen}{RGB}{35,190,35}
 
 
 \newcommand\Fontvi{\fontsize{8}{7.2}\selectfont}
 \newcommand\Fontci{\fontsize{7}{7.2}\selectfont}
+\newcommand\Fontsi{\fontsize{12}{7.2}\selectfont}
 
 \usepackage{colortbl}
 \usepackage{rotating}
@@ -25,8 +46,9 @@
 \usepackage[absolute,overlay]{textpos}
 
 
+
 \usepackage{natbib}
-\bibliographystyle{apalike}
+\bibliographystyle{abbrv}
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 
@@ -44,8 +66,9 @@
 	\usebeamerfont{footline}%
 	\usebeamercolor[fg]{footline}%
 	\hspace{1em}%
-	\insertframenumber/\inserttotalframenumber
+	\insertframenumber
 }
+
 
 %Beamer settings
 \setbeamerfont{frametitle}{size=\LARGE}
@@ -124,7 +147,15 @@
 			
 			\item Study the properties of cryptoassets as financial instruments: \textbf{correlations}, \textbf{returns} and \textbf{volatility}
 			\bigskip
+			
 			\item Study the \textbf{optimal allocation} for a portfolio that contains cryptoassets and mainstream assets 
+			\bigskip
+			
+			\item The \textbf{original contribution} of this work has been:
+			\begin{itemize}
+			    \item Improve/complete the available statistical analysis
+			    \item investigate the diversification obtained by introducing other cryptoassets beyond bitcoin
+			\end{itemize}
 		\end{enumerate}
 	\end{frame}
 
@@ -140,53 +171,82 @@
 	\end{frame}
 }
 
+
+\begin{frame}{Introduction}
+        \begin{minipage}[t][1.2cm][c]{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
+        Bitcoin was more than 85\% of total volumes until 2017,  more than 50\% until the middle of 2019
+        \end{minipage}
+		\begin{figure}
+			\centering
+			\includegraphics[height=5.7cm, width=7cm]{Images/volnoline.pdf}
+		\end{figure}
+\end{frame}
+
+\begin{frame}[noframenumbering]{Introduction}
+        \begin{minipage}[t][1.2cm][c]{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
+        More than 90\% of total volumes exchanged is covered by the 4 major digital assets
+        \end{minipage}
+		\begin{figure}
+			\centering
+			\includegraphics[height=5.7cm, width=7cm]{Images/volline.pdf}
+		\end{figure}
+\end{frame}
+
 \begin{frame}{Introduction}
 	\begin{columns}[T]
 		\begin{column}{.15\linewidth}			
 		\begin{figure}
-			\includegraphics[height=1cm, width=1cm]{Images/btc}
+			\includegraphics[height=2cm, width=2cm]{Images/btc}
 		\end{figure}
 		\begin{figure}
-			\includegraphics[height=1cm, width=1cm]{Images/eth}
-		\end{figure}
-		\begin{figure}
-			\includegraphics[height=1cm, width=1cm]{Images/ltc}
-		\end{figure}
-		\begin{figure}
-			\includegraphics[height=1cm, width=1cm]{Images/xrp}
+			\includegraphics[height=2cm, width=2cm]{Images/eth}
 		\end{figure}
 		\end{column}
-		\hspace{-20pt}
 		\begin{column}{.35\linewidth}
 		\Fontci
 		\begin{tabular}{p{3.3cm}}
 			\\
-			The first protocol to solve the problem of \textbf{double-spending} without the need for a centralized party and to achieve \textbf{scarcity} in the digital realm \\
 			\\
-			\\ 
-			Backed by a blockchain, the technology is aimed at a specific use case: \textbf{smart} contracts \\ 
-			\\ 
+			The first protocol to solve the problem of \textbf{double-spending} without the need for a centralized party and to achieve \textbf{scarcity} in the digital realm 	\\
 			\\
-			Bitcoin's closest rival in terms of the use case. There is a \textbf{limited supply} of 84 million litecoins, compared to 21 million bitcoins    \\
 			\\
-			A cross-border \textbf{payments solution} for large financial institutions based on blockchain technology. A transaciont of XRP can be settled in 4 seconds \\
+			\\
+			\\
+			\\
+			\\
+			\\
+			Backed by a blockchain, the technology is aimed at a specific use case: \textbf{smart} contracts \\
 
 		\end{tabular}
 		\end{column}
 		\vrule{}
 		\hspace{10pt}
-		\begin{column}{.50\linewidth}
-		\begin{minipage}[c][.6\textheight][c]{\linewidth}
-		More than 90\% of total volumes exchanged is covered by tha main 4 digital assets
+		\begin{column}{.15\linewidth}			
 		\begin{figure}
-			\centering
-			\includegraphics[height=4.4cm, width=5.5cm]{Images/volumi}
+			\includegraphics[height=2cm, width=2cm]{Images/ltc}
 		\end{figure}
-		\end{minipage}
-		\end{column}	
+		\begin{figure}
+			\includegraphics[height=2cm, width=2cm]{Images/xrp}
+		\end{figure}
+		\end{column}
+		\begin{column}{.35\linewidth}
+		\Fontci
+		\begin{tabular}{p{3.3cm}}
+			\\
+			\\
+			Bitcoin's closest rival in terms of the use case. There is a \textbf{limited supply} of 84 million litecoins, compared to 21 million bitcoins    \\
+			\\
+			\\
+			\\
+			\\
+			\\
+			\\
+			A cross-border \textbf{payments solution} for large financial institutions based on blockchain technology. A transaciont of XRP can be settled in 4 seconds \\
+
+		\end{tabular}
+		\end{column}			
 	\end{columns}
 \end{frame}
-
 
 
 \section{Dataset}
@@ -194,7 +254,7 @@
 \begin{frame}[allowframebreaks]{Dataset}
 \bigskip
 \Fontvi
-The dataset contains 886 observations of the prices (expressed in USD) of 20 assets valued daily (excluding holidays and weekends) from the $1^{st}$ of January 2016 till the $24^{th}$ of May 2019 (some data provided by Bloomberg and others, the ones related to the cryptoassets, by Coinmarketcap).
+The dataset contains 886 observations of the prices (expressed in USD) of 19 assets valued daily (excluding holidays and weekends) from the $1^{st}$ of January 2016 till the $24^{th}$ of May 2019 (some data provided by Bloomberg and others, the ones related to the cryptoassets, by Coinmarketcap).
 
 
 The assets we included in our analysis are grouped into five classes:
@@ -270,50 +330,12 @@ The assets we included in our analysis are grouped into five classes:
 					\end{figure}
 				\end{minipage}
 		\end{tabular}}
-		\captionof{figure}{Correlation matrices presented in \cite{corbet} (left matrix) and \cite{weiyi} (right matrix)}
+		\captionof{figure}{Correlation matrices presented in Corbet et al. \cite{corbet} (left matrix) and Liu \cite{weiyi} (right matrix)}
 		\label{tab:liter_corr}
 	\end{table}
 \end{frame}
 
 
-
-	
-%\begin{frame} {More on Correlations}
-%In \cite{samuele} the dataset goes from July 2010 to November 2018 and it contains %Bitcoin and several financial instruments that rapresent the asset classes. %Vengono calcolate le correlazioni di bitcoin con diversi indici di mercato usando %vari modelli per le distribuzioni dei rendimenti: 
-%\bigskip
-%\bigskip
-%\bigskip
-
-%	\begin{table}
-%		\footnotesize
-%		\centering
-%		\noindent\makebox[\textwidth]{\begin{tabular}{llllllll}
-%			& \begin{rotate}{45} bric \end{rotate} & \begin{rotate}{45} sp500 \end{rotate} & \begin{rotate}{45}eurostoxx \end{rotate}& \begin{rotate}{45}nasdaq \end{rotate} & \begin{rotate}{45}bond\_europe \end{rotate} & \begin{rotate}{45}bond\_us \end{rotate} & \begin{rotate}{45}bond\_eur \end{rotate}\\
-%			\midrule
-%			Historical Correlations & 1,4\% & 4,4\% & 4,1\% & 3,6\% & 1,4\% & -1,8\% & 1,9\% \\
-%			Jump Diffusion & 2,7\% & 7,7\% & 6,3\% & 6,4\% & 1,9\% & -2,4\% & 2,7\% \\
-%			Heston & 1,8\% & 6,3\% & 5,9\% & 5,4\% & 1,9\% & -2,2\% & 2,6\% \\
-%			Bates & 1,5\% & 5,2\% & 4,7\% & 4,2\% & 1,4\% & -2,3\% & 2,2\% \\
-%			\midrule
-%		\end{tabular}
-%	}
-
-%\bigskip
-
-%	\noindent\makebox[\textwidth]{%
-%		\begin{tabular}{lllllllll}
-%			& \begin{rotate}{45} eur \end{rotate} & \begin{rotate}{45} gbp \end{rotate} & \begin{rotate}{45} chf \end{rotate} & \begin{rotate}{45} jpy \end{rotate} & \begin{rotate}{45} gold \end{rotate} & \begin{rotate}{45} wti \end{rotate} & \begin{rotate}{45} grain \end{rotate} & \begin{rotate}{45} metal \end{rotate} \\
-%			\midrule
-%			Historical Correlations & 2,3\% & 0,7\% & 2,5\% & -1,1\% & -0,2\% & 0,8\% & 3,5\% & 2,7\% \\
-%			Jump Diffusion & 2,7\% & 1,2\% & 4,4\% & -1,8\% & -0,6\% & 1,1\% & 4,2\% & 4,2\% \\
-%			Heston & 2,8\% & 0,9\% & 3,2\% & -1,8\% & -0,5\% & 0,9\% & 4,5\% & 3,3\% \\
-%			Bates & 3,1\% & 0,5\% & 2,5\% & -1,2\% & -0,1\% & 1,0\% & 3,3\% & 2,8\% \\
-%			\midrule
-%	\end{tabular}}
-%	\end{table}
-
-%A further analysis done by the author is to compute the 18-months and 36-months rolling correlation between Bitcoin and the indexes. The correlations of any asset with Bitcoin is hardly ever significantly different from zero, and when it is, its absolute level is never greater than 15\% unless for a small period.
-%\end{frame}
 	
 \begin{frame}{Markowitz Model}
 The \textbf{Efficient Frontier} is the set of portfolios which satisfy the condition that no other portfolio exists with a higher expected return but with the same standard deviation of return. One can obtain this set by solving the following quadratic problem and by taking the positively sloped portion of the resulted hyperbola:
@@ -327,12 +349,12 @@ The \textbf{Efficient Frontier} is the set of portfolios which satisfy the condi
 for $\mu \in \left( -\inf, \inf \right)$.
 \end{frame}
 \begin{frame}{Efficient Frontiers}
-	In \cite{samuele} the dataset goes from July 2010 to November 2018 and it contains Bitcoin and several financial instruments that rapresent the asset classes. The author computed  efficient frontier with the usual objective function and with the CVaR objective function:
+	In Ametrano-Vianello \cite{samuele} the dataset goes from July 2010 to November 2018 and it contains Bitcoin and several financial instruments that rapresent the asset classes. The author computed  efficient frontier with the usual objective function and with the CVaR objective function:
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.34\textwidth}
 			\includegraphics[width=\textwidth]{Images/efficient_frontier}
 		\end{column}
-		\begin{column}{0.5\textwidth}  %%<--- here
+		\begin{column}{0.34\textwidth}  %%<--- here
 			%		\centering
 			\includegraphics[width=\textwidth]{Images/efficient_frontier_CVaR}
 		\end{column}
@@ -347,7 +369,7 @@ for $\mu \in \left( -\inf, \inf \right)$.
 	The empirical correlation is computed using Pearson's sample correlation formula on the daily log-returns obtained from the price dataset.
 	\begin{figure}
 		\centering
-		\includegraphics[width=10cm,trim=4 4 4 4,clip]{Images/empcorr}
+		\includegraphics[width=14cm, height=5cm, trim=4 4 4 4,clip]{Images/empcorr}
 	\end{figure}
 	The results clearly show that:
 	\begin{itemize}
@@ -355,14 +377,102 @@ for $\mu \in \left( -\inf, \inf \right)$.
 		\item Assets in the same class usually have a high correlation among them
 	\end{itemize}
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 \begin{frame}{P-Values}
 	We then computed the significance of historical correlations through Pearson's t-test and Permutation test:
-	\begin{figure}
-		\centering
-		\includegraphics[width=11cm]{Images/sigtable}
-	\end{figure}
+	\begin{columns}
+	\begin{column}{0.5\textwidth}
+    \fontsize{4pt}{3pt}\selectfont
+    \begin{table}[H]
+        \resizebox{\textwidth}{!}{\begin{tabular}{c c | c c c c c c c}
+            && bric & sp500 & eurostoxx & nasdaq & bond\_europe & bond\_us & bond\_eu\\ \hline
+            \parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{btc}}} & \multicolumn{1}{|l|}{Correlation} & 0.01 & 0.03 & 0.01 & 0.04 & 0.02 & -0.02 & 0.03\\
+            & \multicolumn{1}{|l|}{Pearson \%} & 82.01 & 34.80 & 83.23 & 22.26 & 46.85 & 60.01 & 32.79\\
+            & \multicolumn{1}{|l|}{Permutation \%} & 81.20 & 35.40 & 81.60 & 25.20 & 42.80 & 63.40 & 33.00\\
+            \hline
+        \end{tabular}}
+        \newline
+        \vspace*{0.1 cm}
+        \newline
+        \resizebox{\textwidth}{!}{\begin{tabular}{c c | c c c c c c c c}
+            && eur & gbp & chf & jpy & gold & wti & grain & metal\\ \hline
+            \parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{btc}}} & \multicolumn{1}{|l|}{Correlation} & 0.02 & 0.02 & 0.00 & 0.03 & 0.03 & -0.01 & 0.06  & 0.01\\
+            & \multicolumn{1}{|l|}{Pearson \%} & 55.38 & 61.86 & 95.44 & 55.09 & 43.73 & 73.35 & 8.44 & 80.79\\
+            & \multicolumn{1}{|l|}{Permutation \%} & 52.60 & 61.40 & 96.80 & 59.40 & 44.80 & 73.80 & 9.00 & 82.40\\
+            \hline
+        \end{tabular}}
+    \end{table}
+    \vspace{-0.5 cm}
+    \begin{table}[H]
+        \resizebox{\textwidth}{!}{\begin{tabular}{c c | c c c c c c c}
+            && bric & sp500 & eurostoxx & nasdaq & bond\_europe & bond\_us & bond\_eu\\ \hline
+            \parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{eth}}} & \multicolumn{1}{|l|}{Correlation} & 0.03 & 0.03 & -0.03 & 0.04 & 0.02 & 0.00 & 0.04\\
+            & \multicolumn{1}{|l|}{Pearson \%} & 44.35 & 41.67 & 41.48 & 23.22 & 49.71 & 90.66 & 29.09\\
+            & \multicolumn{1}{|l|}{Permutation \%} & 47.40 & 41.60 & 41.20 & 22.20 & 51.00 & 88.80 & 30.80 \\
+            \hline
+        \end{tabular}}
+        \newline
+        \vspace*{0.1 cm}
+        \newline
+        \resizebox{\textwidth}{!}{\begin{tabular}{c c | c c c c c c c c}
+            && eur & gbp & chf & jpy & gold & wti & grain & metal\\ \hline
+            \parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{eth}}} & \multicolumn{1}{|l|}{Correlation} & 0.05 & -0.01 & 0.08 & 0.03 & 0.05 & -0.07 & 0.02 & 0.03\\
+            & \multicolumn{1}{|l|}{Pearson \%} & 11.04 & 73.73 & 2.06 & 38.20 & 12.31 & 4.41 & 65.20 & 38.74\\
+            & \multicolumn{1}{|l|}{Permutation \%} & 11.80 & 70.40 & 1.80 & 38.40 & 13.40 & 3.00 & 65.40 & 36.60\\
+            \hline
+        \end{tabular}}
+    \end{table}
+    \end{column}
+	\begin{column}{0.5\textwidth}
+	    \fontsize{4pt}{3pt}\selectfont
+	    \begin{table}[H]
+        \resizebox{\textwidth}{!}{\begin{tabular}{c c | c c c c c c c}
+            && bric & sp500 & eurostoxx & nasdaq & bond\_europe & bond\_us & bond\_eu\\ \hline
+            \parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{ltc}}} & \multicolumn{1}{|l|}{Correlation} & 0.07 & 0.05 & 0.04 & 0.07 & 0.03 & -0.04 & 0.03\\
+            & \multicolumn{1}{|l|}{Pearson \%} & 5.24 & 11.05 & 23.44 & 4.60 & 38.33 & 25.24 & 35.83\\
+            & \multicolumn{1}{|l|}{Permutation \%} & 4.40 & 12.20 & 19.60 & 5.40 & 34.00 & 26.40 & 35.00\\
+            \hline
+        \end{tabular}}
+        \newline
+        \vspace*{0.1 cm}
+        \newline
+       \resizebox{\textwidth}{!}{\begin{tabular}{c c | c c c c c c c c}
+            && eur & gbp & chf & jpy & gold & wti & grain & metal\\ \hline
+            \parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{ltc}}} & \multicolumn{1}{|l|}{Correlation} & -0.03 & -0.03  & -0.02 & -0.01 & 0.00 & -0.01 & 0.02 & 0.05\\
+            & \multicolumn{1}{|l|}{Pearson \%} & 34.41 & 34.69 & 58.46 & 84.82 & 99.16 & 85.25 & 57.12 & 12.70\\
+            & \multicolumn{1}{|l|}{Permutation \%} & 33.20 & 37.20 & 58.20 & 87.40 & 99.00 & 87.40 & 56.20 & 13.20\\
+            \hline
+        \end{tabular}}
+    \end{table}
+    \vspace{-0.5 cm}
+    \begin{table}[H]
+       \resizebox{\textwidth}{!}{\begin{tabular}{c c | c c c c c c c}
+            && bric & sp500 & eurostoxx & nasdaq & bond\_europe & bond\_us & bond\_eu\\ \hline
+            \parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{xrp}}} & \multicolumn{1}{|l|}{Correlation} & 0.08 & 0.06 & 0.04 & 0.06 & 0.02 & 0.01 & 0.01\\
+            & \multicolumn{1}{|l|}{Pearson \%} & 2.08 & 8.41 & 23.69 & 9.03 & 45.93 & 79.43 & 73.08\\
+            & \multicolumn{1}{|l|}{Permutation \%} & 2.80 & 7.40 & 24.40 & 9.00 & 46.40 & 81.40 & 71.40\\
+            \hline
+        \end{tabular}}
+        \newline
+        \vspace*{0.1 cm}
+        \newline
+       \resizebox{\textwidth}{!}{\begin{tabular}{c c | c c c c c c c c}
+            && eur & gbp & chf & jpy & gold & wti & grain & metal\\ \hline
+            \parbox[t]{2mm}{\multirow{3}{*}{\rotatebox[origin=c]{90}{xrp}}} & \multicolumn{1}{|l|}{Correlation} & 0.01 & 0.00 & 0.01 & 0.00 & 0.01 & 0.02 & 0.01 & 0.03\\
+            & \multicolumn{1}{|l|}{Pearson \%} & 84.02 & 90.38 & 83.88 & 95.71 & 70.48 & 64.27 & 75.19 & 31.56\\
+            & \multicolumn{1}{|l|}{Permutation \%} & 83.40 & 88.80 & 83.40 & 92.40 & 73.00 & 60.00 & 72.40 & 30.40\\
+            \hline
+        \end{tabular}}
+    \end{table}
+    \end{column}
+    \end{columns}
+
 	In almost every case there is no statistical evidence that correlations are different from zero and when this is the case, the correlations are always below 0.1 in absolute value
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Bitcoin Rolling Correlations}
 Equities
 \begin{figure}
@@ -440,7 +550,7 @@ Are returns of cryptoassets \textbf{i.i.d.}?
 	\end{columns}
 	The distribution parameters are calculated on a 2-years rolling window
 \end{frame}
-\begin{frame}{Return Distribution}
+\begin{frame}{Returns Distribution}
 But they also have the same drawbacks of standard assets' returns
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -449,7 +559,7 @@ But they also have the same drawbacks of standard assets' returns
 		
 		Fat Tails
 		\begin{figure}
-			\includegraphics[width=4cm]{Images/distrbtc.png}
+			\includegraphics[width=4.5cm]{Images/distrbtc.png}
 		\end{figure}
 		\begin{figure}
 			\includegraphics[width=1.3cm]{Images/codasinistra}
@@ -460,7 +570,7 @@ But they also have the same drawbacks of standard assets' returns
 		\centering
 		Volatility Clustering
 		\begin{figure}
-			\includegraphics[width=4cm, height=3.1cm]{Images/clust}
+			\includegraphics[width=6cm, height=4.6cm]{Images/clust}
 		\end{figure}
 		\end{column}
 	\end{columns}
@@ -471,10 +581,12 @@ But they also have the same drawbacks of standard assets' returns
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 		    \Fontvi{} From the $1^{st}$ of January 2016 till the $24^{th}$ of May 2019
+		    \centering
 			\includegraphics[width=5cm]{Images/effwhole}
 		\end{column}
 		\begin{column}{0.5\textwidth}
 		    \Fontvi{} From the $14^{th}$ of July 2017 till the $24^{th}$ of May 2019
+		    \centering
 			\includegraphics[width=5cm]{Images/effhalf}
 		\end{column}
 	\end{columns}
@@ -513,17 +625,68 @@ Best Sharpe Ratio portfolios are allocated as below:
             
             \Fontvi{}Half data set
 		\end{column}
+		\begin{column}{0.25\textwidth}  
+		    \begin{center}
+            \Fontvi{}\textcolor{red}{Standard + cryptoassets}
+            \end{center}
+            \begin{figure}
+                \centering
+                \includegraphics[width=2.3cm]{Images/torte/torta_whole_tutte.png}
+            \end{figure}
+            \begin{figure}
+                \centering
+                \includegraphics[width=2.3cm]{Images/torte/torta_half_tutte.png}
+            \end{figure}
+		\end{column}
+		\begin{column}{0.25\textwidth}  
+		    \begin{center}
+            \Fontvi{}\textcolor{blue}{Standard + btc}
+            \end{center}
+            \begin{figure}
+                \centering
+                \includegraphics[width=2.3cm]{Images/torte/torta_whole_btc.png}
+            \end{figure}
+            \begin{figure}
+                \centering
+                \includegraphics[width=2.3cm]{Images/torte/torta_half_btc.png}
+            \end{figure}
+		\end{column}
+    	\begin{column}{0.25\textwidth} 
+    	    \begin{center}
+            \Fontvi{}Standard
+            \end{center}
+            \begin{figure}
+                \centering
+                \includegraphics[width=2.3cm]{Images/torte/torta_whole_no.png}
+            \end{figure}
+            \begin{figure}
+                \centering
+                \includegraphics[width=2.3cm]{Images/torte/torta_half_no.png}
+            \end{figure}
+		\end{column}
+		\begin{column}{0.15\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=2.2cm]{Images/legend.PNG}
+            \end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Rolling Optimal Portfolios}
+2-years rolling time windows for the optimal portfolio, smoothed with a monthly time window:
+	\begin{columns}
+		\begin{column}{0.1\textwidth}
+
+		\end{column}
 		\begin{column}{0.3\textwidth}  
 		    \begin{center}
             \Fontvi{}\textcolor{red}{Standard + cryptoassets}
             \end{center}
             \begin{figure}
                 \centering
-                \includegraphics[width=2.55cm]{Images/torte/torta_whole_tutte.png}
-            \end{figure}
-            \begin{figure}
-                \centering
-                \includegraphics[width=2.55cm]{Images/torte/torta_half_tutte.png}
+                \includegraphics[width=4cm, height=3cm]{Images/rolling_allocation/rollall.png}
             \end{figure}
 		\end{column}
 		\begin{column}{0.3\textwidth}  
@@ -532,11 +695,7 @@ Best Sharpe Ratio portfolios are allocated as below:
             \end{center}
             \begin{figure}
                 \centering
-                \includegraphics[width=2.55cm]{Images/torte/torta_whole_btc.png}
-            \end{figure}
-            \begin{figure}
-                \centering
-                \includegraphics[width=2.55cm]{Images/torte/torta_half_btc.png}
+                \includegraphics[width=4cm, height=3cm]{Images/rolling_allocation/rollbtc.png}
             \end{figure}
 		\end{column}
     	\begin{column}{0.3\textwidth} 
@@ -545,35 +704,66 @@ Best Sharpe Ratio portfolios are allocated as below:
             \end{center}
             \begin{figure}
                 \centering
-                \includegraphics[width=2.55cm]{Images/torte/torta_whole_no.png}
-            \end{figure}
-            \begin{figure}
-                \centering
-                \includegraphics[width=2.55cm]{Images/torte/torta_half_no.png}
+                \includegraphics[width=4cm, height=3cm]{Images/rolling_allocation/rollno.png}
             \end{figure}
 		\end{column}
 	\end{columns}
 	\begin{figure}
 	    \centering
-	    \includegraphics[width=\linewidth]{Images/legend.PNG}
+	    \includegraphics[width=13.5cm]{Images/legend_roll.PNG}
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Rolling Optimal Portfolios}
+\begin{frame}[noframenumbering]{Rolling Optimal Portfolios}
 2-years rolling time windows for the optimal portfolio, smoothed with a monthly time window:
 	\begin{columns}
 		\begin{column}{0.1\textwidth}
 		    \bigskip
 		    \bigskip
 		    
-            \Fontci{}Focus on cryptoasset
-            \bigskip
-            \bigskip
-            \bigskip
-            \bigskip
-            \bigskip
-            
-            
+            \Fontci{}Focus on Cryptoasset
+		\end{column}
+		\begin{column}{0.3\textwidth}  
+		    \begin{center}
+            \Fontvi{}\textcolor{red}{Standard + cryptoassets}
+            \end{center}
+            \begin{figure}
+                \centering
+                \includegraphics[width=4cm, height=3cm]{Images/rolling_allocation/rollcrall.png}
+            \end{figure}
+		\end{column}
+		\begin{column}{0.3\textwidth}  
+		    \begin{center}
+            \Fontvi{}\textcolor{blue}{Standard + btc}
+            \end{center}
+            \begin{figure}
+                \centering
+                \includegraphics[width=4cm, height=3cm]{Images/rolling_allocation/rollcrbtc.png}
+            \end{figure}
+		\end{column}
+    	\begin{column}{0.3\textwidth} 
+    	    \begin{center}
+            \Fontvi{}Standard
+            \end{center}
+            \begin{figure}
+                \centering
+                \includegraphics[width=4cm, height=3cm]{Images/rolling_allocation/rollcrno.png}
+            \end{figure}
+		\end{column}
+	\end{columns}
+	\begin{figure}
+	    \centering
+	    \includegraphics[width=13.5cm]{Images/legend_roll.PNG}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[noframenumbering]{Rolling Optimal Portfolios}
+2-years rolling time windows for the optimal portfolio, smoothed with a monthly time window:
+	\begin{columns}
+		\begin{column}{0.1\textwidth}
+		    \bigskip
+		    \bigskip
+		    
             \Fontci{}Focus on Standard Asset
 		\end{column}
 		\begin{column}{0.3\textwidth}  
@@ -582,11 +772,7 @@ Best Sharpe Ratio portfolios are allocated as below:
             \end{center}
             \begin{figure}
                 \centering
-                \includegraphics[width=3.2cm, height=2.6cm]{Images/rolling_allocation/rollcrall.png}
-            \end{figure}
-            \begin{figure}
-                \centering
-                \includegraphics[width=3.2cm, height=2.6cm]{Images/rolling_allocation/rollstall.png}
+                \includegraphics[width=4cm, height=3cm]{Images/rolling_allocation/rollstall.png}
             \end{figure}
 		\end{column}
 		\begin{column}{0.3\textwidth}  
@@ -595,11 +781,7 @@ Best Sharpe Ratio portfolios are allocated as below:
             \end{center}
             \begin{figure}
                 \centering
-                \includegraphics[width=3.2cm, height=2.6cm]{Images/rolling_allocation/rollcrbtc.png}
-            \end{figure}
-            \begin{figure}
-                \centering
-                \includegraphics[width=3.2cm, height=2.6cm]{Images/rolling_allocation/rollstbtc.png}
+                \includegraphics[width=4cm, height=3cm]{Images/rolling_allocation/rollstbtc.png}
             \end{figure}
 		\end{column}
     	\begin{column}{0.3\textwidth} 
@@ -608,22 +790,17 @@ Best Sharpe Ratio portfolios are allocated as below:
             \end{center}
             \begin{figure}
                 \centering
-                \includegraphics[width=3.2cm, height=2.6cm]{Images/rolling_allocation/rollcrno.png}
-            \end{figure}
-            \begin{figure}
-                \centering
-                \includegraphics[width=3.2cm, height=2.6cm]{Images/rolling_allocation/rollstno.png}
+                \includegraphics[width=4cm, height=3cm]{Images/rolling_allocation/rollstno.png}
             \end{figure}
 		\end{column}
 	\end{columns}
 	\begin{figure}
 	    \centering
-	    \includegraphics[width=\linewidth]{Images/legend.PNG}
+	    \includegraphics[width=13.5cm]{Images/legend_roll.PNG}
 	\end{figure}
 \end{frame}
 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
 \section{Bibliography}
 
@@ -631,7 +808,8 @@ Best Sharpe Ratio portfolios are allocated as below:
 	\frametitle{References}
 
 %	\scriptsize{\bibliographystyle{acm}}
-%	
+%
+    
 	\nocite{cr1}
 	\nocite{trading}
 	\nocite{correlations}
@@ -679,13 +857,16 @@ Best Sharpe Ratio portfolios are allocated as below:
 		\bigskip
 		
 		\item To diversify among digital assets does not contribute to the value generation, thus it is convenient to bet on a single one of these assets
+		\bigskip
+		
+		\item A further development of this thesis could be to set up a periodical monitoring of the correlations, especially between cryptoassets
 	\end{enumerate}	
 \end{frame}
 
 
 {
 	\usebackgroundtemplate{\includegraphics[width=\paperwidth,trim=4 4 4 4,clip]{Images/grazie.PNG}}%
-	\begin{frame}{Conclusions}
+	\begin{frame}[noframenumbering]{Conclusions}
 	\begin{enumerate}
 		\item Cryptoassets returns behave like standard assets returns: Fat tails and Volatility clustering 
 		\bigskip
@@ -697,6 +878,9 @@ Best Sharpe Ratio portfolios are allocated as below:
 		\bigskip
 		
 		\item To diversify among digital assets does not contribute to the value generation, thus it is convenient to bet on a single one of these assets
+		\bigskip
+		
+		\item A further development of this thesis could be to set up a periodical monitoring of the correlations, especially between cryptoassets
 	\end{enumerate}	
     \end{frame}
 }
